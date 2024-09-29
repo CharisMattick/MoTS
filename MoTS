@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Styles for clickable areas */
+        .clickable-area {
+            position: absolute;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Highlight effect for selected areas */
+        .selected {
+            border-color: #3498db;
+        }
+
+        .reset-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .reset-button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Image with Clickable Areas</h1>
+    
+    <!-- Image Wrapper -->
+    <div class="image-wrapper">
+        <!-- Main image -->
+        <img src="https://via.placeholder.com/600x400" alt="Main Image" width="600" height="400">
+
+        <!-- Clickable areas defined as empty divs positioned on top of the image -->
+        <div class="clickable-area" style="top: 20px; left: 20px; width: 120px; height: 100px;" data-area="1"></div>
+        <div class="clickable-area" style="top: 20px; left: 160px; width: 120px; height: 100px;" data-area="2"></div>
+        <div class="clickable-area" style="top: 20px; left: 300px; width: 120px; height: 100px;" data-area="3"></div>
+        <div class="clickable-area" style="top: 20px; left: 440px; width: 120px; height: 100px;" data-area="4"></div>
+
+        <div class="clickable-area" style="top: 140px; left: 20px; width: 120px; height: 100px;" data-area="5"></div>
+        <div class="clickable-area" style="top: 140px; left: 160px; width: 120px; height: 100px;" data-area="6"></div>
+        <div class="clickable-area" style="top: 140px; left: 300px; width: 120px; height: 100px;" data-area="7"></div>
+        <div class="clickable-area" style="top: 140px; left: 440px; width: 120px; height: 100px;" data-area="8"></div>
+    </div>
+
+    <!-- Reset Button -->
+    <button class="reset-button" onclick="resetSelections()">Reset Selection</button>
+
+    <
