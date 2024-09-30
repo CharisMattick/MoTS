@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mists of Tirna Scithe Helper</title>
     <style>
-        /* Basic page styling */
+        /* Page Styling */
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background: #2c3e50; /* Darker background for a fantasy-themed look */
-            color: #ecf0f1;
             margin: 0;
             padding: 0;
+            background: url('https://images.unsplash.com/photo-1612555376219-0a4e7c4f1b91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGZhaXJ5JTIwd2luZ3N8fDB8fHx8MTY4NTc2NzY3OA&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+            background-size: cover; /* Ensures the image covers the entire background */
+            color: #ecf0f1;
         }
 
-        /* Container for the entire content */
+        /* Container Styling */
         .container {
             max-width: 800px;
             margin: 30px auto;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+            background: rgba(0, 0, 0, 0.5); /* Adds a darker transparent layer for readability */
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
@@ -74,21 +75,11 @@
             cursor: pointer;
             margin-top: 20px;
             transition: background-color 0.2s;
+            border-radius: 5px;
         }
 
         .reset-button:hover {
             background-color: #c0392b;
-        }
-
-        /* Link styling */
-        .footer {
-            margin-top: 20px;
-            color: #95a5a6;
-        }
-
-        .footer a {
-            color: #ecdbff;
-            text-decoration: none;
         }
     </style>
 </head>
@@ -105,10 +96,9 @@
         <!-- Image Wrapper -->
         <div class="image-wrapper">
             <!-- Use the clickable image from the provided link -->
-            <img src="https://i.ibb.co/VTcwRjW/MoTS.png" alt="MoTS" border="0"></a>>
+            <img src="https://i.ibb.co/VTcwRjW/MoTS.png" alt="MoTS" border="0">
 
             <!-- Define the clickable areas using empty divs positioned on top of the image -->
-            <!-- Adjust the top, left, width, and height to match the card areas on the image -->
             <div class="clickable-area" style="top: 20px; left: 20px; width: 140px; height: 160px;" data-area="1"></div>
             <div class="clickable-area" style="top: 20px; left: 180px; width: 140px; height: 160px;" data-area="2"></div>
             <div class="clickable-area" style="top: 20px; left: 340px; width: 140px; height: 160px;" data-area="3"></div>
@@ -122,11 +112,6 @@
 
         <!-- Reset Button -->
         <button class="reset-button" onclick="resetSelections()">Reset Selection</button>
-
-        <!-- Footer with a link to more resources -->
-        <div class="footer">
-            <p>Created by <a href="#">Your Name</a> | <a href="#">More Info</a></p>
-        </div>
     </div>
 
     <script>
