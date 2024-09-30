@@ -3,15 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Image Map</title>
+    <title>Mists of Tirna Scithe Helper</title>
     <style>
+        /* Basic page styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             text-align: center;
-            background-color: #f4f4f4;
-            margin: 20px;
+            background: #2c3e50; /* Darker background for a fantasy-themed look */
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
         }
 
+        /* Container for the entire content */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Georgia', serif;
+            color: #e74c3c;
+            text-shadow: 1px 1px 5px black;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-family: 'Georgia', serif;
+            font-size: 1.5em;
+            color: #ecdbff;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        /* Image Wrapper Styles */
         .image-wrapper {
             position: relative;
             display: inline-block;
@@ -30,6 +64,7 @@
             border-color: #3498db;
         }
 
+        /* Reset button styling */
         .reset-button {
             background-color: #e74c3c;
             color: white;
@@ -44,31 +79,55 @@
         .reset-button:hover {
             background-color: #c0392b;
         }
+
+        /* Link styling */
+        .footer {
+            margin-top: 20px;
+            color: #95a5a6;
+        }
+
+        .footer a {
+            color: #ecdbff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
-    <h1>Interactive Image with Clickable Areas</h1>
-    
-    <!-- Image Wrapper -->
-    <div class="image-wrapper">
-        <!-- Use the clickable image from the provided link -->
-        <img src="<a href="https://imgbb.com/"><img src="https://i.ibb.co/VTcwRjW/MoTS.png" alt="MoTS" border="0"></a>
+    <!-- Container for all the page content -->
+    <div class="container">
+        <!-- Page Title -->
+        <h1>Mists of Tirna Scithe Helper</h1>
+        <h2>A Guide to Navigate the Labyrinth</h2>
 
-        <!-- Define the clickable areas using empty divs positioned on top of the image -->
-        <!-- Adjust the top, left, width, and height to match the card areas on the image -->
-        <div class="clickable-area" style="top: 20px; left: 20px; width: 140px; height: 160px;" data-area="1"></div>
-        <div class="clickable-area" style="top: 20px; left: 180px; width: 140px; height: 160px;" data-area="2"></div>
-        <div class="clickable-area" style="top: 20px; left: 340px; width: 140px; height: 160px;" data-area="3"></div>
-        <div class="clickable-area" style="top: 20px; left: 500px; width: 140px; height: 160px;" data-area="4"></div>
+        <!-- Brief description about the image map -->
+        <p>Welcome to the Mists of Tirna Scithe helper page! Click on the different sections of the image below to see the highlighted areas and find the best path through the mists. Use the "Reset Selection" button if you want to clear your choices and start again.</p>
 
-        <div class="clickable-area" style="top: 200px; left: 20px; width: 140px; height: 160px;" data-area="5"></div>
-        <div class="clickable-area" style="top: 200px; left: 180px; width: 140px; height: 160px;" data-area="6"></div>
-        <div class="clickable-area" style="top: 200px; left: 340px; width: 140px; height: 160px;" data-area="7"></div>
-        <div class="clickable-area" style="top: 200px; left: 500px; width: 140px; height: 160px;" data-area="8"></div>
+        <!-- Image Wrapper -->
+        <div class="image-wrapper">
+            <!-- Use the clickable image from the provided link -->
+            <img src="https://i.ibb.co/QfMdBqw/cards-image.jpg" alt="Mists of Tirna Scithe Map" width="600" height="400">
+
+            <!-- Define the clickable areas using empty divs positioned on top of the image -->
+            <!-- Adjust the top, left, width, and height to match the card areas on the image -->
+            <div class="clickable-area" style="top: 20px; left: 20px; width: 140px; height: 160px;" data-area="1"></div>
+            <div class="clickable-area" style="top: 20px; left: 180px; width: 140px; height: 160px;" data-area="2"></div>
+            <div class="clickable-area" style="top: 20px; left: 340px; width: 140px; height: 160px;" data-area="3"></div>
+            <div class="clickable-area" style="top: 20px; left: 500px; width: 140px; height: 160px;" data-area="4"></div>
+
+            <div class="clickable-area" style="top: 200px; left: 20px; width: 140px; height: 160px;" data-area="5"></div>
+            <div class="clickable-area" style="top: 200px; left: 180px; width: 140px; height: 160px;" data-area="6"></div>
+            <div class="clickable-area" style="top: 200px; left: 340px; width: 140px; height: 160px;" data-area="7"></div>
+            <div class="clickable-area" style="top: 200px; left: 500px; width: 140px; height: 160px;" data-area="8"></div>
+        </div>
+
+        <!-- Reset Button -->
+        <button class="reset-button" onclick="resetSelections()">Reset Selection</button>
+
+        <!-- Footer with a link to more resources -->
+        <div class="footer">
+            <p>Created by <a href="#">Your Name</a> | <a href="#">More Info</a></p>
+        </div>
     </div>
-
-    <!-- Reset Button -->
-    <button class="reset-button" onclick="resetSelections()">Reset Selection</button>
 
     <script>
         // Get all clickable areas
