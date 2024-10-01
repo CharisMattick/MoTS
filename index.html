@@ -14,14 +14,13 @@
             /* Two background images: left and right */
             background-image: url('https://i.ibb.co/6RXSzzK/anthony-tran-5d41p-9vl-Ok-unsplash.jpg'), 
                               url('https://i.ibb.co/6RXSzzK/anthony-tran-5d41p-9vl-Ok-unsplash.jpg');
-            background-repeat: no-repeat, no-repeat; /* Prevent further repetition */
-            background-position: left center, right center; /* Position one image on the left, one on the right */
-            background-size: 50% 100%, 50% 100%; /* Each image covers half the width and full height */
+            background-repeat: no-repeat, no-repeat;
+            background-position: left center, right center;
+            background-size: 50% 100%, 50% 100%;
             background-attachment: fixed;
             color: #ecf0f1;
         }
 
-        
         /* Container Styling */
         .container {
             max-width: 800px;
@@ -37,13 +36,6 @@
             color: #e74c3c;
             text-shadow: 1px 1px 5px black;
             font-size: 2.5em;
-        }
-
-        h2 {
-            font-family: 'Georgia', serif;
-            font-size: 1.5em;
-            color: #ecdbff;
-            margin-top: 10px;
         }
 
         p {
@@ -71,6 +63,11 @@
             border-color: #3498db;
         }
 
+        /* Styling for odd ones out */
+        .odd-out {
+            border-color: #e74c3c; /* Red color for the odd one out */
+        }
+
         /* Reset button styling */
         .reset-button {
             background-color: #e74c3c;
@@ -79,10 +76,10 @@
             padding: 15px 30px;
             font-size: 16px;
             cursor: pointer;
-            margin-top: 20px; /* Space above the button */
+            margin-top: 20px;
             transition: background-color 0.2s;
             border-radius: 5px;
-            display: inline-block; /* Ensures the button respects the center alignment */
+            display: inline-block;
         }
 
         .reset-button:hover {
@@ -91,54 +88,60 @@
     </style>
 </head>
 <body>
-    <!-- Container for all the page content -->
     <div class="container">
-        <!-- Page Title -->
         <h1>Mists of Tirna Scithe Helper</h1>
-        
-        <!-- Brief description about the image map -->
-        <p>Welcome to the Mists of Tirna Scithe helper! Click on the four images that appear in the maze so you don't have to memorize.Take note where the group of three is: left/right, up/down, columns 1&3/2&4</p>
+        <p>Welcome to the Mists of Tirna Scithe helper! Click on the four images that appear in the maze so you don't have to memorize. Take note where the group of three is: left/right, up/down, columns 1&3/2&4</p>
 
-        <!-- Image Wrapper -->
         <div class="image-wrapper">
-            <!-- Use the clickable image from the provided link -->
             <img src="https://i.ibb.co/VTcwRjW/MoTS.png" alt="MoTS" border="0">
-
-            <!-- Define the clickable areas using empty divs positioned on top of the image -->
             <div class="clickable-area" style="top: 20px; left: 0%; width: 140px; height: 160px;" data-area="1"></div>
             <div class="clickable-area" style="top: 20px; left: 25%; width: 140px; height: 160px;" data-area="2"></div>
             <div class="clickable-area" style="top: 20px; left: 50%; width: 140px; height: 160px;" data-area="3"></div>
             <div class="clickable-area" style="top: 20px; left: 75%; width: 140px; height: 160px;" data-area="4"></div>
-
             <div class="clickable-area" style="top: 220px; left: 0%; width: 140px; height: 160px;" data-area="5"></div>
             <div class="clickable-area" style="top: 220px; left: 25%; width: 140px; height: 160px;" data-area="6"></div>
             <div class="clickable-area" style="top: 220px; left: 50%; width: 140px; height: 160px;" data-area="7"></div>
             <div class="clickable-area" style="top: 220px; left: 75%; width: 140px; height: 160px;" data-area="8"></div>
         </div>
 
-        <!-- Centered Reset Button Container -->
         <div style="text-align: center; margin-top: 20px;">
             <button class="reset-button" onclick="resetSelections()">Reset</button>
         </div>
     </div>
 
     <script>
-        // Get all clickable areas
         const clickableAreas = document.querySelectorAll('.clickable-area');
 
-        // Add click event listeners to each area
         clickableAreas.forEach((area) => {
             area.addEventListener('click', () => {
-                // Toggle the 'selected' class on click
                 area.classList.toggle('selected');
+                checkPatterns(); // Check the patterns whenever a selection is changed
             });
         });
 
-        // Function to reset all selections
+        function checkPatterns() {
+            const selectedAreas = Array.from(clickableAreas).filter(area => area.classList.contains('selected'));
+
+            // Clear any previous "odd-out" styling
+            clickableAreas.forEach(area => area.classList.remove('odd-out'));
+
+            if (selectedAreas.length === 4) {
+                const topRow = selectedAreas.filter(area => parseInt(area.dataset.area) <= 4).length;
+                const leftHalf = selectedAreas.filter(area => ['1', '2', '5', '6'].includes(area.dataset.area)).length;
+                const columns13 = selectedAreas.filter(area => ['1', '3', '5', '7'].includes(area.dataset.area)).length;
+
+                if (topRow === 3 || leftHalf === 3 || columns13 === 3) {
+                    selectedAreas.forEach(area => {
+                        if (topRow === 3 && parseInt(area.dataset.area) > 4) area.classList.add('odd-out');
+                        else if (leftHalf === 3 && !['1', '2', '5', '6'].includes(area.dataset.area)) area.classList.add('odd-out');
+                        else if (columns13 === 3 && !['1', '3', '5', '7'].includes(area.dataset.area)) area.classList.add('odd-out');
+                    });
+                }
+            }
+        }
+
         function resetSelections() {
-            clickableAreas.forEach((area) => {
-                area.classList.remove('selected');
-            });
+            clickableAreas.forEach(area => area.classList.remove('selected', 'odd-out'));
         }
     </script>
 </body>
