@@ -26,4 +26,118 @@
             padding: 20px;
             background: rgba(0, 0, 0, 0.6); /* Adds a darker transparent layer for readability */
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Georgia', serif;
+            color: #e74c3c;
+            text-shadow: 1px 1px 5px black;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-family: 'Georgia', serif;
+            font-size: 1.5em;
+            color: #ecdbff;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        /* Image Wrapper Styles */
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Styles for clickable areas */
+        .clickable-area {
+            position: absolute;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Highlight effect for selected areas */
+        .selected {
+            border-color: #3498db;
+        }
+
+        /* Reset button styling */
+        .reset-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px; /* Space above the button */
+            transition: background-color 0.2s;
+            border-radius: 5px;
+            display: inline-block; /* Ensures the button respects the center alignment */
+        }
+
+        .reset-button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container for all the page content -->
+    <div class="container">
+        <!-- Page Title -->
+        <h1>Mists of Tirna Scithe Helper</h1>
+        <h2>A Guide to Navigate the Labyrinth</h2>
+
+        <!-- Brief description about the image map -->
+        <p>Welcome to the Mists of Tirna Scithe helper page! Click on the different sections of the image below to see the highlighted areas and find the best path through the mists. Use the "Reset Selection" button if you want to clear your choices and start again.</p>
+
+        <!-- Image Wrapper -->
+        <div class="image-wrapper">
+            <!-- Use the clickable image from the provided link -->
+            <img src="https://i.ibb.co/VTcwRjW/MoTS.png" alt="MoTS" border="0">
+
+            <!-- Define the clickable areas using empty divs positioned on top of the image -->
+            <div class="clickable-area" style="top: 20px; left: 0%; width: 140px; height: 160px;" data-area="1"></div>
+            <div class="clickable-area" style="top: 20px; left: 25%; width: 140px; height: 160px;" data-area="2"></div>
+            <div class="clickable-area" style="top: 20px; left: 50%; width: 140px; height: 160px;" data-area="3"></div>
+            <div class="clickable-area" style="top: 20px; left: 75%; width: 140px; height: 160px;" data-area="4"></div>
+
+            <div class="clickable-area" style="top: 220px; left: 0%; width: 140px; height: 160px;" data-area="5"></div>
+            <div class="clickable-area" style="top: 220px; left: 25%; width: 140px; height: 160px;" data-area="6"></div>
+            <div class="clickable-area" style="top: 220px; left: 50%; width: 140px; height: 160px;" data-area="7"></div>
+            <div class="clickable-area" style="top: 220px; left: 75%; width: 140px; height: 160px;" data-area="8"></div>
+        </div>
+
+        <!-- Centered Reset Button Container -->
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="reset-button" onclick="resetSelections()">Reset Selection</button>
+        </div>
+    </div>
+
+    <script>
+        // Get all clickable areas
+        const clickableAreas = document.querySelectorAll('.clickable-area');
+
+        // Add click event listeners to each area
+        clickableAreas.forEach((area) => {
+            area.addEventListener('click', () => {
+                // Toggle the 'selected' class on click
+                area.classList.toggle('selected');
+            });
+        });
+
+        // Function to reset all selections
+        function resetSelections() {
+            clickableAreas.forEach((area) => {
+                area.classList.remove('selected');
+            });
+        }
+    </script>
+</body>
+</html>
