@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mists of Tirna Scithe Helper</title>
+    <!-- Include the Google Font -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" />
     <style>
         /* Page Styling */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Waiting for the Sunrise', cursive; /* Apply the custom font to all text */
             text-align: center;
             margin: 0;
             padding: 0;
-            /* Two background images: left and right */
             background-image: url('https://i.ibb.co/6RXSzzK/anthony-tran-5d41p-9vl-Ok-unsplash.jpg'), 
                               url('https://i.ibb.co/6RXSzzK/anthony-tran-5d41p-9vl-Ok-unsplash.jpg');
             background-repeat: no-repeat, no-repeat;
@@ -26,16 +27,25 @@
             max-width: 800px;
             margin: 30px auto;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.6); /* Adds a darker transparent layer for readability */
+            background: rgba(0, 0, 0, 0.6);
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
+        h1, h2, p {
+            font-family: 'Waiting for the Sunrise', cursive; /* Ensure headings and paragraphs use the new font */
+        }
+
         h1 {
-            font-family: 'Perpetua', serif;
             color: #e74c3c;
             text-shadow: 1px 1px 5px black;
             font-size: 2.5em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #ecdbff;
+            margin-top: 10px;
         }
 
         p {
@@ -63,11 +73,6 @@
             border-color: #3498db;
         }
 
-        /* Styling for odd ones out */
-        .odd-out {
-            border-color: #e74c3c; /* Red color for the odd one out */
-        }
-
         /* Reset button styling */
         .reset-button {
             background-color: #e74c3c;
@@ -80,6 +85,7 @@
             transition: background-color 0.2s;
             border-radius: 5px;
             display: inline-block;
+            font-family: 'Arial', sans-serif; /* Use a standard font for the button */
         }
 
         .reset-button:hover {
@@ -88,10 +94,13 @@
     </style>
 </head>
 <body>
+    <!-- Container for all the page content -->
     <div class="container">
         <h1>Mists of Tirna Scithe Helper</h1>
-        <p>Welcome to the Mists of Tirna Scithe helper! Click on the four images that appear in the maze. The odd one out will turn red</p>
+        <h2>A Guide to Navigate the Labyrinth</h2>
+        <p>Welcome to the Mists of Tirna Scithe helper! Click on the four images that appear in the maze so you don't have to memorize.Take note where the group of three is: left/right, up/down, columns 1&3/2&4</p>
 
+        <!-- Image Wrapper -->
         <div class="image-wrapper">
             <img src="https://i.ibb.co/VTcwRjW/MoTS.png" alt="MoTS" border="0">
             <div class="clickable-area" style="top: 20px; left: 0%; width: 140px; height: 160px;" data-area="1"></div>
@@ -104,44 +113,25 @@
             <div class="clickable-area" style="top: 220px; left: 75%; width: 140px; height: 160px;" data-area="8"></div>
         </div>
 
+        <!-- Centered Reset Button Container -->
         <div style="text-align: center; margin-top: 20px;">
             <button class="reset-button" onclick="resetSelections()">Reset</button>
         </div>
     </div>
 
     <script>
+        // Get all clickable areas
         const clickableAreas = document.querySelectorAll('.clickable-area');
-
         clickableAreas.forEach((area) => {
             area.addEventListener('click', () => {
                 area.classList.toggle('selected');
-                checkPatterns(); // Check the patterns whenever a selection is changed
             });
         });
 
-        function checkPatterns() {
-            const selectedAreas = Array.from(clickableAreas).filter(area => area.classList.contains('selected'));
-
-            // Clear any previous "odd-out" styling
-            clickableAreas.forEach(area => area.classList.remove('odd-out'));
-
-            if (selectedAreas.length === 4) {
-                const topRow = selectedAreas.filter(area => parseInt(area.dataset.area) <= 4).length;
-                const leftHalf = selectedAreas.filter(area => ['1', '2', '5', '6'].includes(area.dataset.area)).length;
-                const columns13 = selectedAreas.filter(area => ['1', '3', '5', '7'].includes(area.dataset.area)).length;
-
-                if (topRow === 3 || leftHalf === 3 || columns13 === 3) {
-                    selectedAreas.forEach(area => {
-                        if (topRow === 3 && parseInt(area.dataset.area) > 4) area.classList.add('odd-out');
-                        else if (leftHalf === 3 && !['1', '2', '5', '6'].includes(area.dataset.area)) area.classList.add('odd-out');
-                        else if (columns13 === 3 && !['1', '3', '5', '7'].includes(area.dataset.area)) area.classList.add('odd-out');
-                    });
-                }
-            }
-        }
-
         function resetSelections() {
-            clickableAreas.forEach(area => area.classList.remove('selected', 'odd-out'));
+            clickableAreas.forEach((area) => {
+                area.classList.remove('selected');
+            });
         }
     </script>
 </body>
