@@ -6,19 +6,21 @@
     <title>Mists of Tirna Scithe Helper</title>
     <style>
         /* Page Styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-image: url('https://i.ibb.co/6RXSzzK/anthony-tran-5d41p-9vl-Ok-unsplash.jpg');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            background-size: cover; /* Ensures the image covers the entire background */
-            color: #ecf0f1;
+            body {
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        /* Set up two background images: one aligned left, one aligned right */
+        background-image: url('https://i.ibb.co/6RXSzzK/anthony-tran-5d41p-9vl-Ok-unsplash.jpg'), 
+                          url('https://i.ibb.co/6RXSzzK/anthony-tran-5d41p-9vl-Ok-unsplash.jpg');
+        background-repeat: no-repeat, no-repeat; /* Prevent further repetition */
+        background-position: left center, right center; /* Position one image on the left, one on the right */
+        background-attachment: fixed;
+        background-size: contain; /* Adjust this to fit the images */
+        color: #ecf0f1;
         }
-
+        
         /* Container Styling */
         .container {
             max-width: 800px;
